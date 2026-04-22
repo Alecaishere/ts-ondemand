@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# List of Wi-Fi names where Tailscale should be OFF
+EXCLUDED=("YOUR_HOME_SSID" "YOUR_WORK_SSID")
+
+# Get current Wi-Fi SSID
+CURRENT=$(nmcli -t -f active,ssid dev wifi | grep '^yes:' | cut -d: -f2)
+
+# If not connected to Wi-Fi at all, turn off
+if [ -z "$CURRENT" ]; then
+    /usr/bin/tailscale down
+    exit 0
+fi
+
+# Check if current SSID is in the excluded list
+for ssid in "${EXCLUDED[@]}"; do
+    if [[ "$CURRENT" == "$ssid" ]]; then
+        /usr/bin/tailscale down
+        exit 0
+    fi
+done
+
+# If we get here, we are on an unknown/public network. Turn on.
+# Add any flags you need here, like --accept-dns=false
+/usr/bin/tailscale up
