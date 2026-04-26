@@ -11,19 +11,14 @@ Perfecto para usuarios que usan Tailscale como VPN pero solo cuando es necesario
 
 ## Características
 
-- Activación automática de Tailscale al conectarse a redes WiFi específicas o no confiables.
-- Desconexión automática al volver a redes de confianza (hogar/oficina).
-- Integración con NetworkManager (Debian/Ubuntu).
-- Soporte para exit nodes y subnet routes on-demand.
-- Scripts ligeros en Bash, sin dependencias extras.
-- Configuración via systemd o crontab para persistencia.
-- Logs detallados y monitoreo.
+- Activación automática de Tailscale al conectarse a redes WiFi no configuradas para desconectarse de la VPN..
+- Integración con NetworkManager.
+- Bajo tiempo de ejecución.
 
 ## Prerrequisitos
 
 - Tailscale instalado: `curl -fsSL https://tailscale.com/install.sh | sh`
-- NetworkManager (predeterminado en Debian/Ubuntu).
-- Permisos de root para hooks de NetworkManager.
+- NetworkManager.
 
 ## Instalación
 
