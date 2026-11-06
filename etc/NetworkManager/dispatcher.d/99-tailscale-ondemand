@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 # Trigger the script when a network connects or disconnects
 if [ "$2" = "up" ] || [ "$2" = "down" ]; then
     /usr/local/bin/ts-ondemand
